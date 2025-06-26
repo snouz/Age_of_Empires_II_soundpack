@@ -1,0 +1,14 @@
+{
+  "name": "Age_of_Empires_II_soundpack",
+  "version": "1.0.0",
+  "title": "Age of Empires II soundpack",
+  "author": "snouz",
+  "contact": "discord @snouz",
+  "homepage": "https://github.com/snouz/Age_of_Empires_II_soundpack",
+  "description": "Age of Empires II soundpack",
+  "factorio_version":"2.0",
+  "dependencies": [
+    "base",
+    "? space-age"
+  ]
+}
