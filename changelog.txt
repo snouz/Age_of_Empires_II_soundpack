@@ -1,0 +1,13 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2025-06-26
+  Changes:
+    - Added: Some working sounds, worms = horse that shoot like trebuchets, bots, power poles, roboports, belts, ammo turret, inserters, laser turret, menu buttons
+    - Changed: rocket silo = wonder, recycler = siege workshop
+    - Added optional dependency on AOE2Taunts
+    - Changed mod name to "Age of Empires II sounds replacement" (to make it clear it's not just a speaker thing)
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2025-06-26
+  Info:
+    - Initial commit: Replaced enemy death, enemy attack, utility sounds, buildings sounds
