@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
-Date: 2025-06-
+Date: 2025-06-27
   Changes:
     - Added weapons, explosions, space-platform-hub, tank, car, menu buttons, beacons...
     - Changed roboport, belts
