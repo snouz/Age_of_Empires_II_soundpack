@@ -76,8 +76,8 @@ local typeCorrespondences = {
   {"pipe-to-ground", "fish_trap"},
   {"heat-pipe", "fireball5"},
   {"boiler", "fireball4"},
-  {"logistic-robot", "villager_spawn"},
-  {"construction-robot", "villager_spawn"},
+  --{"logistic-robot", "villager_spawn"},
+  --{"construction-robot", "villager_spawn"},
   {"combat-robot", "military_spawn"},
   {"car", "trebuchet_select"},
   {"artillery-wagon", "siege_workshop"},
@@ -129,7 +129,7 @@ replaceProtoWorkingSound("mining-drill", "electric-mining-drill", "mine3", vol)
 replaceProtoWorkingSound("mining-drill", "electric-mining-drill", "mine2", vol)
 replaceProtoWorkingSound("mining-drill", "big-mining-drill", "mine1", vol)
 replaceProtoWorkingSound("mining-drill", "pumpjack", "trebuchet_pullback3", vol)
---replaceProtoWorkingSound("radar", "radar", "ambiance_tf2", vol)
+replaceProtoWorkingSound("radar", "radar", "ambiance_cricket", vol-8)
 replaceProtoWorkingSound("offshore-pump", "offshore-pump", "ambiance_wave1", vol-8)
 replaceProtoWorkingSound("pump", "pump", "ambiance_wave2", vol-8)
 replaceProtoWorkingSound("transport-belt", "transport-belt", "trebuchet_move", vol-8)
@@ -159,7 +159,7 @@ replaceProtoWorkingSound("inserter", "long-handed-inserter", "whoosh", vol-7)
 replaceProtoWorkingSound("inserter", "burner-inserter", "whoosh", vol-7)
 replaceProtoWorkingSound("inserter", "bulk-inserter", "whoosh", vol-7)
 replaceProtoWorkingSound("inserter", "stack-inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("electric-turret", "tesla-turret", "empty", vol)
+replaceProtoWorkingSound("electric-turret", "tesla-turret", "ambiance_cricket", vol-7)
 replaceProtoWorkingSound("beacon", "beacon", "monk_spawn", 3)
 
 if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working_sound then
@@ -176,10 +176,27 @@ if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working
   data.raw["roboport"]["roboport"].close_door_trigger_effect = nil
 end
 
-local voices = {}
-for i = 1, 1695 do
-  table.insert(voices, makeSound("voices/" .. tostring(i), 11))
+local voices1 = {}
+for i = 1, 400 do
+  table.insert(voices1, makeSound("voices/" .. tostring(i), vol-5))
 end
+local voices2 = {}
+for i = 401, 800 do
+  table.insert(voices2, makeSound("voices/" .. tostring(i), vol-5))
+end
+local voices3 = {}
+for i = 801, 1250 do
+  table.insert(voices3, makeSound("voices/" .. tostring(i), vol-5))
+end
+local voices4 = {}
+for i = 1251, 1695 do
+  table.insert(voices4, makeSound("voices/" .. tostring(i), vol-5))
+end
+local deathsmale = {}
+for i = 1, 6 do
+  table.insert(deathsmale, makeSound("male_death" .. tostring(i), vol))
+end
+
 
 for _, entity in pairs(data.raw["logistic-container"]) do
   if entity.animation_sound then
@@ -187,25 +204,76 @@ for _, entity in pairs(data.raw["logistic-container"]) do
   end
 end
 
-if data.raw["logistic-robot"]["logistic-robot"] and data.raw["logistic-robot"]["logistic-robot"].working_sound and data.raw["logistic-robot"]["logistic-robot"].charging_sound then
-  data.raw["logistic-robot"]["logistic-robot"].working_sound.sound = {variations = voices}
+
+
+if data.raw["logistic-robot"]["logistic-robot"] then
+  local bot = data.raw["logistic-robot"]["logistic-robot"]
+  --[[data.raw["logistic-robot"]["logistic-robot"].working_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
   data.raw["logistic-robot"]["logistic-robot"].working_sound.fade_in_ticks = nil
   data.raw["logistic-robot"]["logistic-robot"].working_sound.fade_out_ticks = nil
-  data.raw["logistic-robot"]["logistic-robot"].charging_sound.sound = {variations = voices, aggregation = nil}
+  data.raw["logistic-robot"]["logistic-robot"].working_sound.max_sounds_per_prototype = 1
+  data.raw["logistic-robot"]["logistic-robot"].charging_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
   data.raw["logistic-robot"]["logistic-robot"].charging_sound.fade_in_ticks = nil
   data.raw["logistic-robot"]["logistic-robot"].charging_sound.fade_out_ticks = nil
+  data.raw["logistic-robot"]["logistic-robot"].charging_sound.max_sounds_per_prototype = 1]]
+  bot.working_sound = {
+    sound = voices1,
+    probability = 1 / 1000,
+    max_sounds_per_prototype = 20,
+  }
+  bot.charging_sound = {
+    sound = voices2,
+    probability = 1 / 1000,
+    max_sounds_per_prototype = 20,
+  }
+
+  if bot.dying_trigger_effect and bot.dying_trigger_effect[3]  then
+    bot.dying_trigger_effect[2].sound = {variations = deathsmale}
+    bot.dying_trigger_effect[3] = nil
+  end
+  --data.raw["logistic-robot"]["logistic-robot"].charging_sound = nil
+  bot.build_sound = {
+    filename = modname .. "/sounds/villager_spawn.ogg", volume = 0.5,
+    aggregation = {max_count = 1, remove = true, count_already_playing = true}
+  }
+
 end
 
-if data.raw["construction-robot"]["construction-robot"] and data.raw["construction-robot"]["construction-robot"].working_sound and data.raw["construction-robot"]["construction-robot"].charging_sound then
-  data.raw["construction-robot"]["construction-robot"].working_sound.sound = {variations = voices}
+
+if data.raw["construction-robot"]["construction-robot"] then
+  local bot = data.raw["construction-robot"]["construction-robot"]
+  --[[data.raw["construction-robot"]["construction-robot"].working_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
   data.raw["construction-robot"]["construction-robot"].working_sound.fade_in_ticks = nil
   data.raw["construction-robot"]["construction-robot"].working_sound.fade_out_ticks = nil
-  data.raw["construction-robot"]["construction-robot"].charging_sound.sound = {variations = voices, aggregation = nil}
+  data.raw["construction-robot"]["construction-robot"].working_sound.max_sounds_per_prototype = 1
+  data.raw["construction-robot"]["construction-robot"].charging_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
   data.raw["construction-robot"]["construction-robot"].charging_sound.fade_in_ticks = nil
   data.raw["construction-robot"]["construction-robot"].charging_sound.fade_out_ticks = nil
+  data.raw["construction-robot"]["construction-robot"].charging_sound.max_sounds_per_prototype = 1]]
+  bot.working_sound = {
+    sound = voices3,
+    probability = 1 / 1000,
+    max_sounds_per_prototype = 20,
+  }
+  bot.charging_sound = {
+    sound = voices4,
+    probability = 1 / 1000,
+    max_sounds_per_prototype = 20,
+  }
 
-  data.raw["construction-robot"]["construction-robot"].repairing_sound = {variations = {}}
+  if bot.dying_trigger_effect and bot.dying_trigger_effect[3]  then
+    bot.dying_trigger_effect[2].sound = {variations = deathsmale}
+    bot.dying_trigger_effect[3] = nil
+  end
+  
+  bot.build_sound = {
+    filename = modname .. "/sounds/villager_spawn.ogg", volume = 0.5,
+    aggregation = {max_count = 1, remove = true, count_already_playing = true}
+  }
+
+  bot.repairing_sound = {variations = {}}
   table.insert(data.raw["construction-robot"]["construction-robot"].repairing_sound.variations, makeSound("monk_heal", vol))
+
 end
 
 local replaceUtilitySounds = {
@@ -523,6 +591,29 @@ if data.raw["explosion"]["small-explosion"] and data.raw["explosion"]["small-exp
   for i=1, 4 do
     table.insert(data.raw["explosion"]["small-explosion"].sound.variations, {filename = modname.."/sounds/" .. "battering_ram_hit" .. i .. ".ogg", volume = vol / 10})
   end
+end
+
+if data.raw["explosion"]["foundation-tile-explosion"] and data.raw["explosion"]["foundation-tile-explosion"].sound then
+  data.raw["explosion"]["foundation-tile-explosion"].sound.variations = {}
+  for i=1, 4 do
+    table.insert(data.raw["explosion"]["foundation-tile-explosion"].sound.variations, {filename = modname.."/sounds/" .. "missile_impact" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+if data.raw["lightning"]["lightning"] and data.raw["lightning"]["lightning"].sound then
+  data.raw["lightning"]["lightning"].sound.variations = {}
+  table.insert(data.raw["lightning"]["lightning"].sound.variations, {filename = modname.."/sounds/" .. "wonder_destruction.ogg", volume = vol / 10})
+end
+
+if data.raw["thruster"]["thruster"] and data.raw["thruster"]["thruster"].working_sound and data.raw["thruster"]["thruster"].working_sound.main_sounds and data.raw["thruster"]["thruster"].working_sound.main_sounds[1] and data.raw["thruster"]["thruster"].working_sound.main_sounds[1].sound then
+  data.raw["thruster"]["thruster"].working_sound.main_sounds[1].sound.filename = modname.."/sounds/ambiance_fire.ogg"
+  data.raw["thruster"]["thruster"].working_sound.main_sounds[1].sound.volume = vol + 20
+end
+
+if data.raw["accumulator"]["accumulator"] and data.raw["accumulator"]["accumulator"].working_sound and data.raw["accumulator"]["accumulator"].working_sound.main_sounds and data.raw["accumulator"]["accumulator"].working_sound.main_sounds[2] and data.raw["accumulator"]["accumulator"].working_sound.main_sounds[2].sound and data.raw["accumulator"]["accumulator"].working_sound.main_sounds[1].sound then
+  data.raw["accumulator"]["accumulator"].working_sound.main_sounds[2].filename = modname.."/sounds/ambiance_cricket.ogg"
+  data.raw["accumulator"]["accumulator"].working_sound.main_sounds[1].filename = modname.."/sounds/ambiance_fire.ogg"
+  data.raw["accumulator"]["accumulator"].working_sound.idle_sound = nil
 end
 
 -- VEHICLE
