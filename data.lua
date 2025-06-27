@@ -76,8 +76,6 @@ local typeCorrespondences = {
   {"pipe-to-ground", "fish_trap"},
   {"heat-pipe", "fireball5"},
   {"boiler", "fireball4"},
-  --{"logistic-robot", "villager_spawn"},
-  --{"construction-robot", "villager_spawn"},
   {"combat-robot", "military_spawn"},
   {"car", "trebuchet_select"},
   {"artillery-wagon", "siege_workshop"},
@@ -161,6 +159,15 @@ replaceProtoWorkingSound("inserter", "bulk-inserter", "whoosh", vol-7)
 replaceProtoWorkingSound("inserter", "stack-inserter", "whoosh", vol-7)
 replaceProtoWorkingSound("electric-turret", "tesla-turret", "ambiance_cricket", vol-7)
 replaceProtoWorkingSound("beacon", "beacon", "monk_spawn", 3)
+replaceProtoWorkingSound("generator", "steam-engine", "ambiance_mill_turn", vol-7)
+replaceProtoWorkingSound("generator", "steam-turbine", "mill", vol-7)
+replaceProtoWorkingSound("fusion-generator", "fusion-generator", "mill", vol-7)
+replaceProtoWorkingSound("reactor", "nuclear-reactor", "ambiance_fire", vol)
+replaceProtoWorkingSound("fusion-reactor", "fusion-reactor", "ambiance_fire", vol)
+replaceProtoWorkingSound("reactor", "heating-tower", "ambiance_fire", vol)
+replaceProtoWorkingSound("storage-tank", "storage-tank", "empty", vol)
+replaceProtoWorkingSound("assembling-machine", "chemical-plant", "empty", vol)
+replaceProtoWorkingSound("capture-robot", "capture-robot", "priest_convert1", vol+15)
 
 if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working_sound then
   data.raw["roboport"]["roboport"].working_sound.sound = {variations = {}}
@@ -265,7 +272,7 @@ if data.raw["construction-robot"]["construction-robot"] then
     bot.dying_trigger_effect[2].sound = {variations = deathsmale}
     bot.dying_trigger_effect[3] = nil
   end
-  
+
   bot.build_sound = {
     filename = modname .. "/sounds/villager_spawn.ogg", volume = 0.5,
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
@@ -508,14 +515,14 @@ end
 if data.raw["gun"]["shotgun"] and data.raw["gun"]["shotgun"].attack_parameters then 
   data.raw["gun"]["shotgun"].attack_parameters.sound = {variations = {}}
   for i=1, 3 do
-    table.insert(data.raw["gun"]["shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = vol / 10})
+    table.insert(data.raw["gun"]["shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = 1})
   end
 end
 
 if data.raw["gun"]["combat-shotgun"] and data.raw["gun"]["combat-shotgun"].attack_parameters then 
   data.raw["gun"]["combat-shotgun"].attack_parameters.sound = {variations = {}}
   for i=1, 3 do
-    table.insert(data.raw["gun"]["combat-shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = vol / 10})
+    table.insert(data.raw["gun"]["combat-shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = 1})
   end
 end
 
@@ -528,6 +535,15 @@ if data.raw["gun"]["railgun"] and data.raw["gun"]["railgun"].attack_parameters t
   data.raw["gun"]["railgun"].attack_parameters.sound = {variations = {}}
   table.insert(data.raw["gun"]["railgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "gun_fire" .. ".ogg", volume = vol / 10})
 end
+
+if data.raw["gun"]["artillery-wagon-cannon"] and data.raw["gun"]["artillery-wagon-cannon"].attack_parameters then 
+  data.raw["gun"]["artillery-wagon-cannon"].attack_parameters.sound = {variations = {}}
+  for i=1, 3 do
+    table.insert(data.raw["gun"]["artillery-wagon-cannon"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "trebuchet_fire" .. i .. ".ogg", volume = 2})
+  end
+end
+
+-- turrets
 
 if data.raw["ammo-turret"]["railgun-turret"] and data.raw["ammo-turret"]["railgun-turret"].attack_parameters then 
   data.raw["ammo-turret"]["railgun-turret"].attack_parameters.sound = {variations = {}}
@@ -551,6 +567,21 @@ if data.raw["ammo-turret"]["rocket-turret"] and data.raw["ammo-turret"]["rocket-
     data.raw["ammo-turret"]["rocket-turret"].rotating_sound.sound.filename = modname.."/sounds/trebuchet_pullback1.ogg"
     data.raw["ammo-turret"]["rocket-turret"].rotating_sound.sound.volume = vol
   end
+end
+
+
+if data.raw["ammo-turret"]["gun-turret"] and data.raw["ammo-turret"]["gun-turret"].attack_parameters then
+  data.raw["ammo-turret"]["gun-turret"].preparing_sound = makeSound("ram_pullback", vol)
+  data.raw["ammo-turret"]["gun-turret"].folding_sound = makeSound("scorpion_pullback", vol)
+  if data.raw["ammo-turret"]["gun-turret"].rotating_sound and data.raw["ammo-turret"]["railgun-turret"].rotating_sound.sound then
+    data.raw["ammo-turret"]["gun-turret"].rotating_sound.sound.filename = modname.."/sounds/trebuchet_pullback1.ogg"
+    data.raw["ammo-turret"]["gun-turret"].rotating_sound.sound.volume = vol
+  end
+end
+
+if data.raw["artillery-turret"]["artillery-turret"] and data.raw["artillery-turret"]["artillery-turret"].rotating_sound and data.raw["artillery-turret"]["artillery-turret"].rotating_sound.sound then
+  data.raw["artillery-turret"]["artillery-turret"].rotating_sound.sound.filename = modname.."/sounds/trebuchet_pullback1.ogg"
+  data.raw["artillery-turret"]["artillery-turret"].rotating_sound.sound.volume = vol
 end
 
 --explosions
