@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2025-06-
+  Changes:
+    - Added weapons, explosions, space-platform-hub, tank, car, menu buttons, beacons...
+    - Changed roboport, belts
+    - Lowered volume of inserters
+    - Changed bots to villager speach (1695 files!)
+    - Converted files from wav to ogg, to save a lot of space
+---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 2025-06-26
   Changes:

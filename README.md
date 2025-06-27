@@ -1,2 +1,3 @@
-# Age_of_Empires_II_soundpack
-AoE II soundpack for factorio
+Soundpack replacing base sounds with Age of Empires II ones.
+
+Will evolve with even more replacements and tweaks.
