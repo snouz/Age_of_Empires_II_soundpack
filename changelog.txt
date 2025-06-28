@@ -2,8 +2,8 @@
 Version: 1.3.0
 Date: 2025-06-
   Changes:
-    - Added radars, lightning, thruster, accumulator, generators, reactors, artillery
-    - Changed chemical-plant, turrets rotation
+    - Added radars, lightning, thruster, accumulator, generators, reactors, artillery, trains, asteroid collectors, crusher
+    - Changed attack alert, chemical-plant, turrets rotation
     - Capture robot now does "wololo"...
     - Reworked bots sounds
 ---------------------------------------------------------------------------------------------------

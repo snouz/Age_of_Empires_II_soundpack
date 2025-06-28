@@ -88,7 +88,11 @@ local typeCorrespondences = {
   {"train-stop", "herdables_found"},
   {"rail-signal", "herdables_found"},
   {"rail-chain-signal", "herdables_found"},
-  {"space-platform-hub", "ship_spawn"}
+  {"space-platform-hub", "ship_spawn"},
+  {"cargo-wagon", "house"},
+  {"fluid-wagon", "house"},
+  {"artillery-wagon", "tower"},
+  {"asteroid-collector", "siege_workshop"},
 }
 
 for _, corr in pairs(typeCorrespondences) do
@@ -168,6 +172,7 @@ replaceProtoWorkingSound("reactor", "heating-tower", "ambiance_fire", vol)
 replaceProtoWorkingSound("storage-tank", "storage-tank", "empty", vol)
 replaceProtoWorkingSound("assembling-machine", "chemical-plant", "empty", vol)
 replaceProtoWorkingSound("capture-robot", "capture-robot", "priest_convert1", vol+15)
+replaceProtoWorkingSound("assembling-machine", "crusher", "battering_ram_hit2", vol)
 
 if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working_sound then
   data.raw["roboport"]["roboport"].working_sound.sound = {variations = {}}
@@ -296,7 +301,7 @@ local replaceUtilitySounds = {
   {"gui_click", "select1", vol},
   {"list_box_click", "select1", vol},
   {"confirm", "select1", vol},
-  {"alert_destroyed", "attack_warning_base", vol},
+  {"alert_destroyed", "attack_warning_general", vol},
   {"console_message", "chat", vol},
   {"scenario_message", "chat", vol},
   {"game_lost", "playerdefeated", vol},
@@ -645,6 +650,21 @@ if data.raw["accumulator"]["accumulator"] and data.raw["accumulator"]["accumulat
   data.raw["accumulator"]["accumulator"].working_sound.main_sounds[2].filename = modname.."/sounds/ambiance_cricket.ogg"
   data.raw["accumulator"]["accumulator"].working_sound.main_sounds[1].filename = modname.."/sounds/ambiance_fire.ogg"
   data.raw["accumulator"]["accumulator"].working_sound.idle_sound = nil
+end
+
+if data.raw["asteroid-collector"]["asteroid-collector"] and data.raw["asteroid-collector"]["asteroid-collector"].arm_extend_sound and data.raw["asteroid-collector"]["asteroid-collector"].arm_retract_sound and data.raw["asteroid-collector"]["asteroid-collector"].munch_sound then
+  data.raw["asteroid-collector"]["asteroid-collector"].arm_extend_sound.variations = {makeSound("trade_cart_move", vol)}
+  data.raw["asteroid-collector"]["asteroid-collector"].arm_retract_sound.variations = {makeSound("trade_cart_move", vol)}
+  data.raw["asteroid-collector"]["asteroid-collector"].munch_sound.variations = {makeSound("capped_ram_hit3", vol)}
+end
+
+
+
+if data.raw["locomotive"]["locomotive"] and data.raw["locomotive"]["locomotive"].working_sound and data.raw["locomotive"]["locomotive"].working_sound then
+  data.raw["locomotive"]["locomotive"].working_sound.activate_sound = makeSound("gather_point", vol+15)
+  data.raw["locomotive"]["locomotive"].working_sound.deactivate_sound = makeSound("trade_cart_stop", vol+15)
+  data.raw["locomotive"]["locomotive"].open_sound = makeSound("mangonel_select", vol+15)
+  data.raw["locomotive"]["locomotive"].close_sound = makeSound("empty", vol)
 end
 
 -- VEHICLE
