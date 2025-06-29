@@ -99,6 +99,7 @@ local typeCorrespondences = {
   {"fluid-wagon", "house"},
   {"artillery-wagon", "tower"},
   {"asteroid-collector", "siege_workshop"},
+  {"agricultural-tower", "farm"},
 }
 
 for _, corr in pairs(typeCorrespondences) do
@@ -116,6 +117,7 @@ replaceAllBaseSounds("mining-drill", "pumpjack", "ship_move3")
 replaceAllBaseSounds("car", "tank", "scorpion_select")
 replaceAllBaseSounds("furnace", "recycler", "archery_range")
 replaceAllBaseSounds("assembling-machine", "cryogenic-plant", "town_bell2")
+replaceAllBaseSounds("assembling-machine", "biochamber", "farm")
 
 -- WORKING SOUNDS
 
@@ -182,6 +184,8 @@ replaceProtoWorkingSound("capture-robot", "capture-robot", "priest_convert1", vo
 replaceProtoWorkingSound("assembling-machine", "crusher", "battering_ram_hit2", vol)
 replaceProtoWorkingSound("assembling-machine", "cryogenic-plant", "ambiance_wave5", vol)
 replaceProtoWorkingSound("rocket-silo", "rocket-silo", "empty", vol)
+replaceProtoWorkingSound("assembling-machine", "biochamber", "ambiance_tf2", vol)
+replaceProtoWorkingSound("agricultural-tower", "agricultural-tower", "ambiance_tf2_asia", vol)
 
 if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working_sound then
   data.raw["roboport"]["roboport"].working_sound.sound = {variations = {}}
@@ -642,6 +646,58 @@ if data.raw["explosion"]["foundation-tile-explosion"] and data.raw["explosion"][
   data.raw["explosion"]["foundation-tile-explosion"].sound.variations = {}
   for i=1, 4 do
     table.insert(data.raw["explosion"]["foundation-tile-explosion"].sound.variations, {filename = modname.."/sounds/" .. "missile_impact" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+
+
+if data.raw["deliver-impact-combination"]["vehicle-wood"] and data.raw["deliver-impact-combination"]["vehicle-wood"].trigger_effect_item and data.raw["deliver-impact-combination"]["vehicle-wood"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["vehicle-wood"].trigger_effect_item.variations = {}
+  for i=1, 3 do
+    table.insert(data.raw["deliver-impact-combination"]["vehicle-wood"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "woodchop" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+if data.raw["deliver-impact-combination"]["vehicle-tree"] and data.raw["deliver-impact-combination"]["vehicle-tree"].trigger_effect_item and data.raw["deliver-impact-combination"]["vehicle-tree"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["vehicle-tree"].trigger_effect_item.variations = {}
+  for i=1, 3 do
+    table.insert(data.raw["deliver-impact-combination"]["vehicle-tree"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "woodchop" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+if data.raw["deliver-impact-combination"]["vehicle-stone"] and data.raw["deliver-impact-combination"]["vehicle-stone"].trigger_effect_item and data.raw["deliver-impact-combination"]["vehicle-stone"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["vehicle-stone"].trigger_effect_item.variations = {}
+  for i=1, 3 do
+    table.insert(data.raw["deliver-impact-combination"]["vehicle-stone"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "mine" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+if data.raw["deliver-impact-combination"]["vehicle-glass"] and data.raw["deliver-impact-combination"]["vehicle-glass"].trigger_effect_item and data.raw["deliver-impact-combination"]["vehicle-glass"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["vehicle-glass"].trigger_effect_item.variations = {}
+  for i=1, 3 do
+    table.insert(data.raw["deliver-impact-combination"]["vehicle-glass"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "mine" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+
+if data.raw["deliver-impact-combination"]["vehicle-metal"] and data.raw["deliver-impact-combination"]["vehicle-metal"].trigger_effect_item and data.raw["deliver-impact-combination"]["vehicle-metal"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["vehicle-metal"].trigger_effect_item.variations = {}
+  for i=1, 1 do
+    table.insert(data.raw["deliver-impact-combination"]["vehicle-metal"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "capped_ram_hit" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+if data.raw["deliver-impact-combination"]["vehicle-metal-large"] and data.raw["deliver-impact-combination"]["vehicle-metal-large"].trigger_effect_item and data.raw["deliver-impact-combination"]["vehicle-metal-large"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["vehicle-metal-large"].trigger_effect_item.variations = {}
+  for i=1, 1 do
+    table.insert(data.raw["deliver-impact-combination"]["vehicle-metal-large"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "capped_ram_hit" .. i .. ".ogg", volume = vol / 10})
+  end
+end
+
+if data.raw["deliver-impact-combination"]["bullet-organic"] and data.raw["deliver-impact-combination"]["bullet-organic"].trigger_effect_item and data.raw["deliver-impact-combination"]["bullet-organic"].trigger_effect_item.sound then
+  data.raw["deliver-impact-combination"]["bullet-organic"].trigger_effect_item.variations = {}
+  for i=1, 5 do
+    table.insert(data.raw["deliver-impact-combination"]["bullet-organic"].trigger_effect_item.variations, {filename = modname.."/sounds/" .. "injury" .. i .. ".ogg", volume = vol / 20})
   end
 end
 
