@@ -2,7 +2,8 @@
 Version: 1.4.0
 Date: 2025-06-
   Changes:
-    - Added lightning rods, rocket-silo, cryogenic-plant, agricultural-tower, biochamber, car impacts, bullet impacts
+    - Added lightning rods, rocket-silo, cryogenic-plant, agricultural-tower, biochamber, car impacts, bullet impacts, captive-biter-spawner
+    - Added a nod in the main menu music
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.0
 Date: 2025-06-28

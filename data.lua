@@ -118,6 +118,7 @@ replaceAllBaseSounds("car", "tank", "scorpion_select")
 replaceAllBaseSounds("furnace", "recycler", "archery_range")
 replaceAllBaseSounds("assembling-machine", "cryogenic-plant", "town_bell2")
 replaceAllBaseSounds("assembling-machine", "biochamber", "farm")
+replaceAllBaseSounds("assembling-machine", "captive-biter-spawner", "enemy_convert_success")
 
 -- WORKING SOUNDS
 
@@ -359,6 +360,7 @@ end
 
 replaceDyingSounds("unit-spawner", "biter-spawner", "camel_death", 2)
 replaceDyingSounds("unit-spawner", "spitter-spawner", "camel_death", 2)
+replaceDyingSounds("assembling-machine", "captive-biter-spawner", "camel_death", 2)
 replaceDyingSounds("unit", "small-biter", "cavalry_death", 3)
 replaceDyingSounds("unit", "medium-biter", "cavalry_death", 3)
 replaceDyingSounds("unit", "big-biter", "cavalry_death", 3)
@@ -808,4 +810,9 @@ if data.raw["gui-style"] and data.raw["gui-style"].default and data.raw["gui-sty
 end
 if data.raw["gui-style"] and data.raw["gui-style"].default and data.raw["gui-style"].default.menu_button and data.raw["gui-style"].default.menu_button.left_click_sound then
   data.raw["gui-style"].default.menu_button.left_click_sound = modname .. "/sounds/select2.ogg"
+end
+
+
+if data.raw["ambient-sound"]["main-menu"] then
+  data.raw["ambient-sound"]["main-menu"].sound = modname .. "/sounds/customsounds/main-menu.ogg"
 end
