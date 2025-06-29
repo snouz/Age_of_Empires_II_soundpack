@@ -8,7 +8,7 @@ end
 
 local function makeCustomSound(sound, volume)
   if not volume then volume = vol end
-  return { filename = modname .. "/sounds/customsounds/" .. sound .. ".wav", volume = volume / 10 }
+  return { filename = modname .. "/sounds/customsounds/" .. sound .. ".ogg", volume = volume / 10 }
 end
 
 local function replaceProtoSound(type, name, property, sound, var_num, volume)
@@ -743,7 +743,7 @@ if data.raw["locomotive"]["locomotive"] and data.raw["locomotive"]["locomotive"]
 end
 
 if data.raw["rocket-silo"]["rocket-silo"] then
-  data.raw["rocket-silo"]["rocket-silo"].alarm_sound = modname .. "/sounds/customsounds/silo-alarm.wav"
+  data.raw["rocket-silo"]["rocket-silo"].alarm_sound = modname .. "/sounds/customsounds/silo-alarm.ogg"
   data.raw["rocket-silo"]["rocket-silo"].quick_alarm_sound = makeCustomSound("silo-alarm-short", vol)
   data.raw["rocket-silo"]["rocket-silo"].raise_rocket_sound = makeCustomSound("silo-raise-rocket", vol)
   data.raw["rocket-silo"]["rocket-silo"].doors_sound = makeCustomSound("silo-doors", vol)
@@ -752,7 +752,7 @@ if data.raw["rocket-silo"]["rocket-silo"] then
 end
 
 if data.raw["rocket-silo-rocket"]["rocket-silo-rocket"] and data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].flying_sound then
-  data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].flying_sound.filename = modname .. "/sounds/customsounds/silo-rocket.wav"
+  data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].flying_sound.filename = modname .. "/sounds/customsounds/silo-rocket.ogg"
 end
 
 -- VEHICLE
