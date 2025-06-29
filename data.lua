@@ -2,7 +2,13 @@ local modname = "__Age_of_Empires_II_soundpack__"
 local vol = 15
 
 local function makeSound(sound, volume)
+  if not volume then volume = vol end
   return { filename = modname .. "/sounds/" .. sound .. ".ogg", volume = volume / 10 }
+end
+
+local function makeCustomSound(sound, volume)
+  if not volume then volume = vol end
+  return { filename = modname .. "/sounds/customsounds/" .. sound .. ".wav", volume = volume / 10 }
 end
 
 local function replaceProtoSound(type, name, property, sound, var_num, volume)
@@ -109,6 +115,7 @@ end
 replaceAllBaseSounds("mining-drill", "pumpjack", "ship_move3")
 replaceAllBaseSounds("car", "tank", "scorpion_select")
 replaceAllBaseSounds("furnace", "recycler", "archery_range")
+replaceAllBaseSounds("assembling-machine", "cryogenic-plant", "town_bell2")
 
 -- WORKING SOUNDS
 
@@ -173,6 +180,8 @@ replaceProtoWorkingSound("storage-tank", "storage-tank", "empty", vol)
 replaceProtoWorkingSound("assembling-machine", "chemical-plant", "empty", vol)
 replaceProtoWorkingSound("capture-robot", "capture-robot", "priest_convert1", vol+15)
 replaceProtoWorkingSound("assembling-machine", "crusher", "battering_ram_hit2", vol)
+replaceProtoWorkingSound("assembling-machine", "cryogenic-plant", "ambiance_wave5", vol)
+replaceProtoWorkingSound("rocket-silo", "rocket-silo", "empty", vol)
 
 if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working_sound then
   data.raw["roboport"]["roboport"].working_sound.sound = {variations = {}}
@@ -652,6 +661,16 @@ if data.raw["accumulator"]["accumulator"] and data.raw["accumulator"]["accumulat
   data.raw["accumulator"]["accumulator"].working_sound.idle_sound = nil
 end
 
+if data.raw["lightning-attractor"]["lightning-rod"] and data.raw["lightning-attractor"]["lightning-rod"].working_sound and data.raw["lightning-attractor"]["lightning-rod"].working_sound.main_sounds and data.raw["lightning-attractor"]["lightning-rod"].working_sound.main_sounds[2] and data.raw["lightning-attractor"]["lightning-rod"].working_sound.main_sounds[2].sound and data.raw["lightning-attractor"]["lightning-rod"].working_sound.main_sounds[1].sound then
+  data.raw["lightning-attractor"]["lightning-rod"].working_sound.main_sounds[2].filename = modname.."/sounds/monk_spawn.ogg"
+  data.raw["lightning-attractor"]["lightning-rod"].working_sound.main_sounds[1].filename = modname.."/sounds/ambiance_cricket.ogg"
+end
+
+if data.raw["lightning-attractor"]["lightning-collector"] and data.raw["lightning-attractor"]["lightning-collector"].working_sound and data.raw["lightning-attractor"]["lightning-collector"].working_sound.main_sounds and data.raw["lightning-attractor"]["lightning-collector"].working_sound.main_sounds[2] and data.raw["lightning-attractor"]["lightning-collector"].working_sound.main_sounds[2].sound and data.raw["lightning-attractor"]["lightning-collector"].working_sound.main_sounds[1].sound then
+  data.raw["lightning-attractor"]["lightning-collector"].working_sound.main_sounds[2].filename = modname.."/sounds/monk_spawn.ogg"
+  data.raw["lightning-attractor"]["lightning-collector"].working_sound.main_sounds[1].filename = modname.."/sounds/ambiance_cricket.ogg"
+end
+
 if data.raw["asteroid-collector"]["asteroid-collector"] and data.raw["asteroid-collector"]["asteroid-collector"].arm_extend_sound and data.raw["asteroid-collector"]["asteroid-collector"].arm_retract_sound and data.raw["asteroid-collector"]["asteroid-collector"].munch_sound then
   data.raw["asteroid-collector"]["asteroid-collector"].arm_extend_sound.variations = {makeSound("trade_cart_move", vol)}
   data.raw["asteroid-collector"]["asteroid-collector"].arm_retract_sound.variations = {makeSound("trade_cart_move", vol)}
@@ -664,7 +683,20 @@ if data.raw["locomotive"]["locomotive"] and data.raw["locomotive"]["locomotive"]
   data.raw["locomotive"]["locomotive"].working_sound.activate_sound = makeSound("gather_point", vol+15)
   data.raw["locomotive"]["locomotive"].working_sound.deactivate_sound = makeSound("trade_cart_stop", vol+15)
   data.raw["locomotive"]["locomotive"].open_sound = makeSound("mangonel_select", vol+15)
-  data.raw["locomotive"]["locomotive"].close_sound = makeSound("empty", vol)
+  data.raw["locomotive"]["locomotive"].close_sound = makeSound("gather_point", vol)
+end
+
+if data.raw["rocket-silo"]["rocket-silo"] then
+  data.raw["rocket-silo"]["rocket-silo"].alarm_sound = modname .. "/sounds/customsounds/silo-alarm.wav"
+  data.raw["rocket-silo"]["rocket-silo"].quick_alarm_sound = makeCustomSound("silo-alarm-short", vol)
+  data.raw["rocket-silo"]["rocket-silo"].raise_rocket_sound = makeCustomSound("silo-raise-rocket", vol)
+  data.raw["rocket-silo"]["rocket-silo"].doors_sound = makeCustomSound("silo-doors", vol)
+  data.raw["rocket-silo"]["rocket-silo"].clamps_on_sound = makeCustomSound("silo-clamps-on", vol)
+  data.raw["rocket-silo"]["rocket-silo"].clamps_off_sound = makeCustomSound("silo-clamps-on", vol)
+end
+
+if data.raw["rocket-silo-rocket"]["rocket-silo-rocket"] and data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].flying_sound then
+  data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].flying_sound.filename = modname .. "/sounds/customsounds/silo-rocket.wav"
 end
 
 -- VEHICLE
