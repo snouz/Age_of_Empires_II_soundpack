@@ -1,5 +1,5 @@
 local modname = "__Age_of_Empires_II_soundpack__"
-local vol = 15
+local vol = 0.1
 
 local function makeSound(sound, volume)
   if not volume then volume = vol end
@@ -144,47 +144,47 @@ replaceProtoWorkingSound("mining-drill", "electric-mining-drill", "mine3", vol)
 replaceProtoWorkingSound("mining-drill", "electric-mining-drill", "mine2", vol)
 replaceProtoWorkingSound("mining-drill", "big-mining-drill", "mine1", vol)
 replaceProtoWorkingSound("mining-drill", "pumpjack", "trebuchet_pullback3", vol)
-replaceProtoWorkingSound("radar", "radar", "ambiance_cricket", vol-8)
-replaceProtoWorkingSound("offshore-pump", "offshore-pump", "ambiance_wave1", vol-8)
-replaceProtoWorkingSound("pump", "pump", "ambiance_wave2", vol-8)
-replaceProtoWorkingSound("transport-belt", "transport-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("transport-belt", "fast-transport-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("transport-belt", "express-transport-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("transport-belt", "turbo-transport-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("underground-belt", "underground-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("underground-belt", "fast-underground-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("underground-belt", "express-underground-belt", "trebuchet_move", vol-8)
-replaceProtoWorkingSound("underground-belt", "turbo-underground-belt", "trebuchet_move", vol-8)
+replaceProtoWorkingSound("radar", "radar", "ambiance_cricket", vol * 0.5)
+replaceProtoWorkingSound("offshore-pump", "offshore-pump", "ambiance_wave1", vol * 0.5)
+replaceProtoWorkingSound("pump", "pump", "ambiance_wave2", vol * 0.5)
+replaceProtoWorkingSound("transport-belt", "transport-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("transport-belt", "fast-transport-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("transport-belt", "express-transport-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("transport-belt", "turbo-transport-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("underground-belt", "underground-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("underground-belt", "fast-underground-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("underground-belt", "express-underground-belt", "trebuchet_move", vol * 0.5)
+replaceProtoWorkingSound("underground-belt", "turbo-underground-belt", "trebuchet_move", vol * 0.5)
 replaceProtoWorkingSound("splitter", "splitter", "war_wagon", vol)
 replaceProtoWorkingSound("splitter", "fast-splitter", "war_wagon", vol)
 replaceProtoWorkingSound("splitter", "express-splitter", "war_wagon", vol)
 replaceProtoWorkingSound("splitter", "turbo-splitter", "war_wagon", vol)
-replaceProtoWorkingSound("electric-pole", "small-electric-pole", "ambiance_wind3", vol-8)
-replaceProtoWorkingSound("electric-pole", "big-electric-pole", "ambiance_wind3", vol-8)
-replaceProtoWorkingSound("electric-pole", "medium-electric-pole", "ambiance_wind3", vol-8)
-replaceProtoWorkingSound("electric-pole", "substation", "ambiance_wind3", vol-8)
-replaceProtoWorkingSound("beam", "laser-beam", "ambiance_fire", vol+5)
-replaceProtoWorkingSound("beam", "chain-tesla-turret-beam-start", "siege_weapon_move", vol+5)
-replaceProtoWorkingSound("beam", "chain-tesla-gun-beam-start", "siege_weapon_move", vol+5)
-replaceProtoWorkingSound("beam", "chain-tesla-turret-beam-bounce", "siege_weapon_move", vol+5)
-replaceProtoWorkingSound("beam", "chain-tesla-gun-beam-bounce", "siege_weapon_move", vol+5)
-replaceProtoWorkingSound("inserter", "inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("inserter", "fast-inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("inserter", "long-handed-inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("inserter", "burner-inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("inserter", "bulk-inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("inserter", "stack-inserter", "whoosh", vol-7)
-replaceProtoWorkingSound("electric-turret", "tesla-turret", "ambiance_cricket", vol-7)
+replaceProtoWorkingSound("electric-pole", "small-electric-pole", "ambiance_wind3", vol * 0.5)
+replaceProtoWorkingSound("electric-pole", "big-electric-pole", "ambiance_wind3", vol * 0.5)
+replaceProtoWorkingSound("electric-pole", "medium-electric-pole", "ambiance_wind3", vol * 0.5)
+replaceProtoWorkingSound("electric-pole", "substation", "ambiance_wind3", vol * 0.5)
+replaceProtoWorkingSound("beam", "laser-beam", "ambiance_fire", vol*1.2)
+replaceProtoWorkingSound("beam", "chain-tesla-turret-beam-start", "siege_weapon_move", vol*1.2)
+replaceProtoWorkingSound("beam", "chain-tesla-gun-beam-start", "siege_weapon_move", vol*1.2)
+replaceProtoWorkingSound("beam", "chain-tesla-turret-beam-bounce", "siege_weapon_move", vol*1.2)
+replaceProtoWorkingSound("beam", "chain-tesla-gun-beam-bounce", "siege_weapon_move", vol*1.2)
+replaceProtoWorkingSound("inserter", "inserter", "whoosh", vol * 0.5)
+replaceProtoWorkingSound("inserter", "fast-inserter", "whoosh", vol * 0.5)
+replaceProtoWorkingSound("inserter", "long-handed-inserter", "whoosh", vol * 0.5)
+replaceProtoWorkingSound("inserter", "burner-inserter", "whoosh", vol * 0.5)
+replaceProtoWorkingSound("inserter", "bulk-inserter", "whoosh", vol * 0.5)
+replaceProtoWorkingSound("inserter", "stack-inserter", "whoosh", vol * 0.5)
+replaceProtoWorkingSound("electric-turret", "tesla-turret", "ambiance_cricket", vol * 0.5)
 replaceProtoWorkingSound("beacon", "beacon", "monk_spawn", 3)
-replaceProtoWorkingSound("generator", "steam-engine", "ambiance_mill_turn", vol-7)
-replaceProtoWorkingSound("generator", "steam-turbine", "mill", vol-7)
-replaceProtoWorkingSound("fusion-generator", "fusion-generator", "mill", vol-7)
+replaceProtoWorkingSound("generator", "steam-engine", "ambiance_mill_turn", vol * 0.5)
+replaceProtoWorkingSound("generator", "steam-turbine", "mill", vol * 0.5)
+replaceProtoWorkingSound("fusion-generator", "fusion-generator", "mill", vol * 0.5)
 replaceProtoWorkingSound("reactor", "nuclear-reactor", "ambiance_fire", vol)
 replaceProtoWorkingSound("fusion-reactor", "fusion-reactor", "ambiance_fire", vol)
 replaceProtoWorkingSound("reactor", "heating-tower", "ambiance_fire", vol)
 replaceProtoWorkingSound("storage-tank", "storage-tank", "empty", vol)
 replaceProtoWorkingSound("assembling-machine", "chemical-plant", "empty", vol)
-replaceProtoWorkingSound("capture-robot", "capture-robot", "priest_convert1", vol+15)
+replaceProtoWorkingSound("capture-robot", "capture-robot", "priest_convert1", vol *2)
 replaceProtoWorkingSound("assembling-machine", "crusher", "battering_ram_hit2", vol)
 replaceProtoWorkingSound("assembling-machine", "cryogenic-plant", "ambiance_wave5", vol)
 replaceProtoWorkingSound("rocket-silo", "rocket-silo", "empty", vol)
@@ -211,19 +211,19 @@ end
 
 local voices1 = {}
 for i = 1, 400 do
-  table.insert(voices1, makeSound("voices/" .. tostring(i), vol-5))
+  table.insert(voices1, makeSound("voices/" .. tostring(i), vol * 0.7))
 end
 local voices2 = {}
 for i = 401, 800 do
-  table.insert(voices2, makeSound("voices/" .. tostring(i), vol-5))
+  table.insert(voices2, makeSound("voices/" .. tostring(i), vol * 0.7))
 end
 local voices3 = {}
 for i = 801, 1250 do
-  table.insert(voices3, makeSound("voices/" .. tostring(i), vol-5))
+  table.insert(voices3, makeSound("voices/" .. tostring(i), vol * 0.7))
 end
 local voices4 = {}
 for i = 1251, 1695 do
-  table.insert(voices4, makeSound("voices/" .. tostring(i), vol-5))
+  table.insert(voices4, makeSound("voices/" .. tostring(i), vol * 0.7))
 end
 local deathsmale = {}
 for i = 1, 6 do
@@ -332,7 +332,7 @@ local replaceUtilitySounds = {
   {"armor_insert", "garrison", vol},
   {"armor_remove", "ungarrison", vol},
   {"switch_gun", "sword_throw", vol, 3},
-  {"undo", "error", vol-5},
+  {"undo", "error", vol * 0.7},
   {"rotated_small", "arrow", vol, 4},
   {"rotated_medium", "arrow", vol, 4},
   {"rotated_large", "arrow", vol, 4},
@@ -765,9 +765,9 @@ end
 
 
 if data.raw["locomotive"]["locomotive"] and data.raw["locomotive"]["locomotive"].working_sound then
-  data.raw["locomotive"]["locomotive"].working_sound.activate_sound = makeSound("gather_point", vol+15)
-  data.raw["locomotive"]["locomotive"].working_sound.deactivate_sound = makeSound("trade_cart_stop", vol+15)
-  data.raw["locomotive"]["locomotive"].open_sound = makeSound("mangonel_select", vol+15)
+  data.raw["locomotive"]["locomotive"].working_sound.activate_sound = makeSound("gather_point", vol *2)
+  data.raw["locomotive"]["locomotive"].working_sound.deactivate_sound = makeSound("trade_cart_stop", vol *2)
+  data.raw["locomotive"]["locomotive"].open_sound = makeSound("mangonel_select", vol *2)
   data.raw["locomotive"]["locomotive"].close_sound = makeSound("gather_point", vol)
   if data.raw["locomotive"]["locomotive"].stop_trigger and data.raw["locomotive"]["locomotive"].stop_trigger[3] and data.raw["locomotive"]["locomotive"].stop_trigger[3].sound then
     data.raw["locomotive"]["locomotive"].stop_trigger[3].sound.filename = modname .. "/sounds/customsounds/train-stop.ogg"
@@ -795,7 +795,7 @@ if data.raw["car"]["tank"] and data.raw["car"]["tank"].working_sound and data.ra
   data.raw["car"]["tank"].working_sound.activate_sound = makeSound("horse_move", vol)
   data.raw["car"]["tank"].working_sound.deactivate_sound = makeSound("trade_cart_stop", vol)
   data.raw["car"]["tank"].working_sound.main_sounds = {
-    sound = { filename = modname .. "/sounds/siege_weapon_move.ogg", volume = vol-5 },
+    sound = { filename = modname .. "/sounds/siege_weapon_move.ogg", volume = vol * 0.7 },
     match_speed_to_activity = true,
     activity_to_speed_modifiers =
     {
@@ -817,7 +817,7 @@ if data.raw["car"]["car"] and data.raw["car"]["car"].working_sound and data.raw[
   data.raw["car"]["car"].working_sound.activate_sound = makeSound("horse_move", vol)
   data.raw["car"]["car"].working_sound.deactivate_sound = makeSound("trade_cart_stop", vol)
   data.raw["car"]["car"].working_sound.main_sounds = {
-    sound = { filename = modname .. "/sounds/siege_weapon_move.ogg", volume = vol-5 },
+    sound = { filename = modname .. "/sounds/siege_weapon_move.ogg", volume = vol * 0.7 },
     match_speed_to_activity = true,
     activity_to_speed_modifiers =
     {
