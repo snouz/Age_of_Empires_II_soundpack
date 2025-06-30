@@ -742,7 +742,7 @@ if data.raw["accumulator"]["accumulator"] and data.raw["accumulator"]["accumulat
   data.raw["accumulator"]["accumulator"].working_sound.main_sounds[2].sound.filename = modname.."/sounds/ambiance_cricket.ogg"
   data.raw["accumulator"]["accumulator"].working_sound.main_sounds[1].sound.filename = modname.."/sounds/aoe3/aoe3_CampFireLoop.ogg"
   data.raw["accumulator"]["accumulator"].working_sound.main_sounds[2].sound.volume = vol / 10
-  data.raw["accumulator"]["accumulator"].working_sound.main_sounds[1].sound.filename = vol / 10
+  data.raw["accumulator"]["accumulator"].working_sound.main_sounds[1].sound.volume = vol / 10
   data.raw["accumulator"]["accumulator"].working_sound.idle_sound = nil
 end
 
