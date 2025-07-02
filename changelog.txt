@@ -3,6 +3,7 @@ Version: 1.4.2
 Date: 2025-06-30
   Changes:
     - Made sure a volume value never goes under 0
+    - Improved bot sounds
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2025-06-30

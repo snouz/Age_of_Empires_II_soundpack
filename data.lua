@@ -1,5 +1,5 @@
 local modname = "__Age_of_Empires_II_soundpack__"
-local vol = 0.1
+local vol = 15
 
 local function makeSound(sound, volume)
   if not volume then volume = vol end
@@ -209,27 +209,36 @@ if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working
   data.raw["roboport"]["roboport"].close_door_trigger_effect = nil
 end
 
-local voices1 = {}
-for i = 1, 400 do
-  table.insert(voices1, makeSound("voices/" .. tostring(i), vol * 0.7))
+local voices_male_short = {}
+for i = 20, 1172 do
+  table.insert(voices_male_short, makeSound("male/" .. tostring(i), vol * 0.7))
 end
-local voices2 = {}
-for i = 401, 800 do
-  table.insert(voices2, makeSound("voices/" .. tostring(i), vol * 0.7))
+
+local voices_male_long = {}
+for i = 1, 19 do
+  table.insert(voices_male_long, makeSound("male/" .. tostring(i), vol * 0.7))
 end
-local voices3 = {}
-for i = 801, 1250 do
-  table.insert(voices3, makeSound("voices/" .. tostring(i), vol * 0.7))
+
+local voices_mixed_short = {}
+for i = 20, 457 do
+  table.insert(voices_mixed_short, makeSound("female/" .. tostring(i), vol * 0.7))
 end
-local voices4 = {}
-for i = 1251, 1695 do
-  table.insert(voices4, makeSound("voices/" .. tostring(i), vol * 0.7))
+for i = 20, 1172 do
+  table.insert(voices_mixed_short, makeSound("male/" .. tostring(i), vol * 0.7))
 end
+
+local voices_mixed_long = {}
+for i = 1, 19 do
+  table.insert(voices_mixed_long, makeSound("female/" .. tostring(i), vol * 0.7))
+end
+for i = 1, 19 do
+  table.insert(voices_mixed_long, makeSound("male/" .. tostring(i), vol * 0.7))
+end
+
 local deathsmale = {}
 for i = 1, 6 do
   table.insert(deathsmale, makeSound("male_death" .. tostring(i), vol))
 end
-
 
 for _, entity in pairs(data.raw["logistic-container"]) do
   if entity.animation_sound then
@@ -237,34 +246,24 @@ for _, entity in pairs(data.raw["logistic-container"]) do
   end
 end
 
-
-
 if data.raw["logistic-robot"]["logistic-robot"] then
   local bot = data.raw["logistic-robot"]["logistic-robot"]
-  --[[data.raw["logistic-robot"]["logistic-robot"].working_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
-  data.raw["logistic-robot"]["logistic-robot"].working_sound.fade_in_ticks = nil
-  data.raw["logistic-robot"]["logistic-robot"].working_sound.fade_out_ticks = nil
-  data.raw["logistic-robot"]["logistic-robot"].working_sound.max_sounds_per_prototype = 1
-  data.raw["logistic-robot"]["logistic-robot"].charging_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
-  data.raw["logistic-robot"]["logistic-robot"].charging_sound.fade_in_ticks = nil
-  data.raw["logistic-robot"]["logistic-robot"].charging_sound.fade_out_ticks = nil
-  data.raw["logistic-robot"]["logistic-robot"].charging_sound.max_sounds_per_prototype = 1]]
   bot.working_sound = {
-    sound = voices1,
-    probability = 1 / 1000,
-    max_sounds_per_prototype = 20,
+    sound = voices_mixed_short,
+    probability = 1 / 500,
+    fade_in_ticks = 8,
+    fade_out_ticks = 8,
+    max_sounds_per_prototype = 30,
   }
-  bot.charging_sound = {
-    sound = voices2,
-    probability = 1 / 1000,
-    max_sounds_per_prototype = 20,
-  }
+
+  if bot.charging_sound and bot.charging_sound.sound then
+    bot.charging_sound.sound.variations = voices_mixed_long
+  end
 
   if bot.dying_trigger_effect and bot.dying_trigger_effect[3]  then
     bot.dying_trigger_effect[2].sound = {variations = deathsmale}
     bot.dying_trigger_effect[3] = nil
   end
-  --data.raw["logistic-robot"]["logistic-robot"].charging_sound = nil
   bot.build_sound = {
     filename = modname .. "/sounds/villager_spawn.ogg", volume = 0.5,
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
@@ -275,24 +274,17 @@ end
 
 if data.raw["construction-robot"]["construction-robot"] then
   local bot = data.raw["construction-robot"]["construction-robot"]
-  --[[data.raw["construction-robot"]["construction-robot"].working_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
-  data.raw["construction-robot"]["construction-robot"].working_sound.fade_in_ticks = nil
-  data.raw["construction-robot"]["construction-robot"].working_sound.fade_out_ticks = nil
-  data.raw["construction-robot"]["construction-robot"].working_sound.max_sounds_per_prototype = 1
-  data.raw["construction-robot"]["construction-robot"].charging_sound.sound = {variations = voices, aggregation = {max_count = 1, remove = true, count_already_playing = true}}
-  data.raw["construction-robot"]["construction-robot"].charging_sound.fade_in_ticks = nil
-  data.raw["construction-robot"]["construction-robot"].charging_sound.fade_out_ticks = nil
-  data.raw["construction-robot"]["construction-robot"].charging_sound.max_sounds_per_prototype = 1]]
   bot.working_sound = {
-    sound = voices3,
-    probability = 1 / 1000,
-    max_sounds_per_prototype = 20,
+    sound = voices_male_short,
+    probability = 1 / 500,
+    fade_in_ticks = 8,
+    fade_out_ticks = 8,
+    max_sounds_per_prototype = 30,
   }
-  bot.charging_sound = {
-    sound = voices4,
-    probability = 1 / 1000,
-    max_sounds_per_prototype = 20,
-  }
+
+  if bot.charging_sound and bot.charging_sound.sound then
+    bot.charging_sound.sound.variations = voices_male_long
+  end
 
   if bot.dying_trigger_effect and bot.dying_trigger_effect[3]  then
     bot.dying_trigger_effect[2].sound = {variations = deathsmale}
