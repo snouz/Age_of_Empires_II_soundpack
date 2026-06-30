@@ -1,5 +1,5 @@
 local modname = "__Age_of_Empires_II_soundpack__"
-local vol = 15
+local vol = 10
 
 local function makeSound(sound, volume)
   if not volume then volume = vol end
@@ -31,7 +31,7 @@ local function replaceAllBaseSounds(type, name, sound)
       replaceProtoSound(type, name, "open_sound", sound, 1, vol)
     end
     replaceProtoSound(type, name, "mined_sound", "missile_impact", 4, vol)
-    replaceProtoSound(type, name, "close_sound", "empty", 1, 15)
+    replaceProtoSound(type, name, "close_sound", "empty", 1, vol)
   end
 end
 
@@ -109,8 +109,8 @@ for _, corr in pairs(typeCorrespondences) do
 end
 
 for _, entity in pairs(data.raw["gate"]) do
-  replaceProtoSound(type, entity.name, "closing_sound", "gate_lock", 1, 15)
-  replaceProtoSound(type, entity.name, "opening_sound", "gate_unlock", 1, 15)
+  replaceProtoSound(type, entity.name, "closing_sound", "gate_lock", 1, vol)
+  replaceProtoSound(type, entity.name, "opening_sound", "gate_unlock", 1, vol)
 end
 
 replaceAllBaseSounds("mining-drill", "pumpjack", "ship_move3")
@@ -175,7 +175,7 @@ replaceProtoWorkingSound("inserter", "burner-inserter", "whoosh", vol * 0.5)
 replaceProtoWorkingSound("inserter", "bulk-inserter", "whoosh", vol * 0.5)
 replaceProtoWorkingSound("inserter", "stack-inserter", "whoosh", vol * 0.5)
 replaceProtoWorkingSound("electric-turret", "tesla-turret", "ambiance_cricket", vol * 0.5)
-replaceProtoWorkingSound("beacon", "beacon", "monk_spawn", 3)
+replaceProtoWorkingSound("beacon", "beacon", "monk_spawn", vol / 5)
 replaceProtoWorkingSound("generator", "steam-engine", "ambiance_mill_turn", vol * 0.5)
 replaceProtoWorkingSound("generator", "steam-turbine", "mill", vol * 0.5)
 replaceProtoWorkingSound("fusion-generator", "fusion-generator", "mill", vol * 0.5)
@@ -197,14 +197,14 @@ replaceProtoWorkingSound("unit-spawner", "gleba-spawner-small", "injury4", vol, 
 
 if data.raw["roboport"]["roboport"] and data.raw["roboport"]["roboport"].working_sound then
   data.raw["roboport"]["roboport"].working_sound.sound = {variations = {}}
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf1", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf2", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf3", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf4", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf5", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf6", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf7", 3))
-  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf8", 3))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf1", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf2", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf3", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf4", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf5", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf6", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf7", vol / 5))
+  table.insert(data.raw["roboport"]["roboport"].working_sound.sound.variations, makeSound("ambiance_tf8", vol / 5))
   data.raw["roboport"]["roboport"].open_door_trigger_effect = nil
   data.raw["roboport"]["roboport"].close_door_trigger_effect = nil
 end
@@ -242,7 +242,7 @@ end
 
 for _, entity in pairs(data.raw["logistic-container"]) do
   if entity.animation_sound then
-    entity.animation_sound.variations = makeSound("animal_hunt", 10)
+    entity.animation_sound.variations = makeSound("animal_hunt", vol * 0.66)
   end
 end
 
@@ -265,7 +265,7 @@ if data.raw["logistic-robot"]["logistic-robot"] then
     bot.dying_trigger_effect[3] = nil
   end
   bot.build_sound = {
-    filename = modname .. "/sounds/villager_spawn.ogg", volume = 0.5,
+    filename = modname .. "/sounds/villager_spawn.ogg", volume = vol / 3,
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   }
 
@@ -292,7 +292,7 @@ if data.raw["construction-robot"]["construction-robot"] then
   end
 
   bot.build_sound = {
-    filename = modname .. "/sounds/villager_spawn.ogg", volume = 0.5,
+    filename = modname .. "/sounds/villager_spawn.ogg", volume = vol / 3,
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   }
 
@@ -350,7 +350,6 @@ end
 local function replaceDyingSounds(type, name, replacement, var_num)
   if data.raw[type] and data.raw[type][name] and data.raw[type][name].dying_sound and data.raw[type][name].dying_sound.variations then
     data.raw[type][name].dying_sound.variations = {}
-
     for i=1, var_num do
       table.insert(data.raw[type][name].dying_sound.variations, {filename = modname .. "/sounds/" .. replacement .. i .. ".ogg", volume = vol / 10})
     end
@@ -552,14 +551,14 @@ end
 if data.raw["gun"]["shotgun"] and data.raw["gun"]["shotgun"].attack_parameters then 
   data.raw["gun"]["shotgun"].attack_parameters.sound = {variations = {}}
   for i=1, 3 do
-    table.insert(data.raw["gun"]["shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = 1})
+    table.insert(data.raw["gun"]["shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = vol * 0.6})
   end
 end
 
 if data.raw["gun"]["combat-shotgun"] and data.raw["gun"]["combat-shotgun"].attack_parameters then 
   data.raw["gun"]["combat-shotgun"].attack_parameters.sound = {variations = {}}
   for i=1, 3 do
-    table.insert(data.raw["gun"]["combat-shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = 1})
+    table.insert(data.raw["gun"]["combat-shotgun"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "cannon_fire" .. i .. ".ogg", volume = vol * 0.6})
   end
 end
 
@@ -576,7 +575,7 @@ end
 if data.raw["gun"]["artillery-wagon-cannon"] and data.raw["gun"]["artillery-wagon-cannon"].attack_parameters then 
   data.raw["gun"]["artillery-wagon-cannon"].attack_parameters.sound = {variations = {}}
   for i=1, 3 do
-    table.insert(data.raw["gun"]["artillery-wagon-cannon"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "trebuchet_fire" .. i .. ".ogg", volume = 2})
+    table.insert(data.raw["gun"]["artillery-wagon-cannon"].attack_parameters.sound.variations, {filename = modname.."/sounds/" .. "trebuchet_fire" .. i .. ".ogg", volume = vol * 1.3})
   end
 end
 
